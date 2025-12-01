@@ -314,6 +314,180 @@ class AstBuilder(SimplePLSQLVisitor):
 
     def visitEmpty_stmt(self, ctx):
         return NullStmt()
+    
+    def visitDecl(self, ctx):
+        """
+        Updated for grammar:
+            decl : ID ':' type_spec constant_modifier? not_null? init? SEMI
+        Produces Decl(name, typ, init) — typ is returned as a simple string (ctx.type_spec().getText()).
+        """
+        if ctx is None:
+            return None
+
+        # name is the first ID
+        ids = self._id_texts(ctx)
+        name = ids[0] if ids else "unknown"
+
+        # type_spec (required under Option B). Use getText() as a conservative representation.
+        typ = None
+        try:
+            ts = ctx.type_spec()
+            if ts is not None:
+                # Prefer structured visitor if available, otherwise fallback to raw text
+                try:
+                    typ_node = self._safe_visit(ts)
+                    typ = typ_node if typ_node is not None else ts.getText()
+                except Exception:
+                    typ = ts.getText()
+        except Exception:
+            typ = None
+
+        # detect constant / not null modifiers (we keep them local; extend Decl dataclass if you want them stored)
+        is_const = False
+        is_not_null = False
+        try:
+            if ctx.CONSTANT() is not None:
+                is_const = True
+        except Exception:
+            pass
+        try:
+            if ctx.not_null() is not None:
+                is_not_null = True
+        except Exception:
+            pass
+
+        # initializer (init -> (ASSIGN | DEFAULT) expr)
+        init_node = None
+        try:
+            if ctx.init() is not None:
+                # init contains expr; use visitor to convert
+                init_ctx = ctx.init()
+                # If your grammar exposes expr() directly under init()
+                try:
+                    init_node = self._safe_visit(init_ctx.expr())
+                except Exception:
+                    # fallback: visit init rule itself
+                    init_node = self._safe_visit(init_ctx)
+        except Exception:
+            init_node = None
+
+        # create Decl. Keep interface same as before (name, typ, init).
+        # If your Decl supports extra flags, you can extend here.
+        return Decl(name=name, typ=typ, init=init_node,
+                    # optionally include source mapping if Decl supports it:
+                    # start_line=getattr(ctx.start, "line", None),
+                    # end_line=getattr(ctx.stop, "line", None)
+                    )
+
+    def visitParam(self, ctx):
+        """
+        param : ID (IN | OUT | IN OUT)? (':' type_spec)?
+        Return Param(name, mode, typ)
+        """
+        if ctx is None:
+            return None
+        ids = self._id_texts(ctx)
+        name = ids[0] if ids else "p"
+
+        # mode detection
+        mode = None
+        try:
+            if ctx.IN() is not None and ctx.OUT() is None:
+                mode = "IN"
+            if ctx.OUT() is not None and ctx.IN() is None:
+                mode = "OUT"
+            if ctx.IN() is not None and ctx.OUT() is not None:
+                mode = "IN OUT"
+        except Exception:
+            pass
+
+        # type_spec (optional)
+        typ = None
+        try:
+            if ctx.type_spec() is not None:
+                ts = ctx.type_spec()
+                try:
+                    typ_node = self._safe_visit(ts)
+                    typ = typ_node if typ_node is not None else ts.getText()
+                except Exception:
+                    typ = ts.getText()
+        except Exception:
+            typ = None
+
+        return Param(name=name, mode=mode, typ=typ)
+
+    # new: visitType_spec - conservative: return either structured node or text
+    def visitType_spec(self, ctx):
+        """
+        type_spec
+          : simple_type
+          | numeric_type
+          | char_type
+          | pct_attr
+          | ID
+        We keep the representation minimal for now: prefer visiting subnode, else return raw text.
+        """
+        if ctx is None:
+            return None
+        try:
+            # if there are child rules we implemented visitors for, delegate
+            if ctx.simple_type() is not None:
+                return ctx.simple_type().getText()
+            if ctx.numeric_type() is not None:
+                # e.g., NUMBER(10,2)
+                return ctx.numeric_type().getText()
+            if ctx.char_type() is not None:
+                return ctx.char_type().getText()
+            if ctx.pct_attr() is not None:
+                return self._safe_visit(ctx.pct_attr())
+            # fallback: plain ID user-defined type
+            if ctx.ID() is not None:
+                return ctx.ID().getText()
+        except Exception:
+            pass
+        # final fallback
+        return ctx.getText()
+
+    def visitPct_attr(self, ctx):
+        """
+        pct_attr : qualified_name '%' ( 'TYPE' | 'ROWTYPE' )
+        Return a string like 'schema.table%ROWTYPE' or 'col%TYPE'
+        """
+        if ctx is None:
+            return None
+        try:
+            qname = self._safe_visit(ctx.qualified_name()) if ctx.qualified_name() is not None else ctx.getText()
+            attr = ctx.getText().split('%')[-1].upper()
+            # If qualified_name returned a string, compose; otherwise use raw text
+            if isinstance(qname, str):
+                return f"{qname}%{attr}"
+            return ctx.getText()
+        except Exception:
+            return ctx.getText()
+
+    def visitQualified_name(self, ctx):
+        """
+        qualified_name : ID (DOT ID)*
+        Return dotted name as string.
+        """
+        if ctx is None:
+            return None
+        ids = self._id_texts(ctx)
+        return ".".join(ids) if ids else None
+
+    def visitInit(self, ctx):
+        """
+        init : (ASSIGN | DEFAULT) expr
+        Return the expr node.
+        """
+        if ctx is None:
+            return None
+        try:
+            return self._safe_visit(ctx.expr())
+        except Exception:
+            # fallback to visiting children
+            return self.visitChildren(ctx)
+
 
     # Expressions
     def visitCompExpr(self, ctx):

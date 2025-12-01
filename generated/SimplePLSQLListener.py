@@ -89,6 +89,132 @@ class SimplePLSQLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimplePLSQLParser#constant_modifier.
+    def enterConstant_modifier(self, ctx:SimplePLSQLParser.Constant_modifierContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#constant_modifier.
+    def exitConstant_modifier(self, ctx:SimplePLSQLParser.Constant_modifierContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#not_null.
+    def enterNot_null(self, ctx:SimplePLSQLParser.Not_nullContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#not_null.
+    def exitNot_null(self, ctx:SimplePLSQLParser.Not_nullContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#init.
+    def enterInit(self, ctx:SimplePLSQLParser.InitContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#init.
+    def exitInit(self, ctx:SimplePLSQLParser.InitContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#type_decl.
+    def enterType_decl(self, ctx:SimplePLSQLParser.Type_declContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#type_decl.
+    def exitType_decl(self, ctx:SimplePLSQLParser.Type_declContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#record_type_body.
+    def enterRecord_type_body(self, ctx:SimplePLSQLParser.Record_type_bodyContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#record_type_body.
+    def exitRecord_type_body(self, ctx:SimplePLSQLParser.Record_type_bodyContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#record_fields.
+    def enterRecord_fields(self, ctx:SimplePLSQLParser.Record_fieldsContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#record_fields.
+    def exitRecord_fields(self, ctx:SimplePLSQLParser.Record_fieldsContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#field.
+    def enterField(self, ctx:SimplePLSQLParser.FieldContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#field.
+    def exitField(self, ctx:SimplePLSQLParser.FieldContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#collection_type_body.
+    def enterCollection_type_body(self, ctx:SimplePLSQLParser.Collection_type_bodyContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#collection_type_body.
+    def exitCollection_type_body(self, ctx:SimplePLSQLParser.Collection_type_bodyContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#ref_cursor_body.
+    def enterRef_cursor_body(self, ctx:SimplePLSQLParser.Ref_cursor_bodyContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#ref_cursor_body.
+    def exitRef_cursor_body(self, ctx:SimplePLSQLParser.Ref_cursor_bodyContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#cursor_decl.
+    def enterCursor_decl(self, ctx:SimplePLSQLParser.Cursor_declContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#cursor_decl.
+    def exitCursor_decl(self, ctx:SimplePLSQLParser.Cursor_declContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#cursor_params.
+    def enterCursor_params(self, ctx:SimplePLSQLParser.Cursor_paramsContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#cursor_params.
+    def exitCursor_params(self, ctx:SimplePLSQLParser.Cursor_paramsContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#cursor_select.
+    def enterCursor_select(self, ctx:SimplePLSQLParser.Cursor_selectContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#cursor_select.
+    def exitCursor_select(self, ctx:SimplePLSQLParser.Cursor_selectContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#select_list.
+    def enterSelect_list(self, ctx:SimplePLSQLParser.Select_listContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#select_list.
+    def exitSelect_list(self, ctx:SimplePLSQLParser.Select_listContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#pragma_stmt.
+    def enterPragma_stmt(self, ctx:SimplePLSQLParser.Pragma_stmtContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#pragma_stmt.
+    def exitPragma_stmt(self, ctx:SimplePLSQLParser.Pragma_stmtContext):
+        pass
+
+
     # Enter a parse tree produced by SimplePLSQLParser#stmt_list.
     def enterStmt_list(self, ctx:SimplePLSQLParser.Stmt_listContext):
         pass
@@ -293,6 +419,60 @@ class SimplePLSQLListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimplePLSQLParser#FuncCallExpr.
     def exitFuncCallExpr(self, ctx:SimplePLSQLParser.FuncCallExprContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#type_spec.
+    def enterType_spec(self, ctx:SimplePLSQLParser.Type_specContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#type_spec.
+    def exitType_spec(self, ctx:SimplePLSQLParser.Type_specContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#simple_type.
+    def enterSimple_type(self, ctx:SimplePLSQLParser.Simple_typeContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#simple_type.
+    def exitSimple_type(self, ctx:SimplePLSQLParser.Simple_typeContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#numeric_type.
+    def enterNumeric_type(self, ctx:SimplePLSQLParser.Numeric_typeContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#numeric_type.
+    def exitNumeric_type(self, ctx:SimplePLSQLParser.Numeric_typeContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#char_type.
+    def enterChar_type(self, ctx:SimplePLSQLParser.Char_typeContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#char_type.
+    def exitChar_type(self, ctx:SimplePLSQLParser.Char_typeContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#pct_attr.
+    def enterPct_attr(self, ctx:SimplePLSQLParser.Pct_attrContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#pct_attr.
+    def exitPct_attr(self, ctx:SimplePLSQLParser.Pct_attrContext):
+        pass
+
+
+    # Enter a parse tree produced by SimplePLSQLParser#qualified_name.
+    def enterQualified_name(self, ctx:SimplePLSQLParser.Qualified_nameContext):
+        pass
+
+    # Exit a parse tree produced by SimplePLSQLParser#qualified_name.
+    def exitQualified_name(self, ctx:SimplePLSQLParser.Qualified_nameContext):
         pass
 
 

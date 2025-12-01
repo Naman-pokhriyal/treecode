@@ -54,6 +54,76 @@ class SimplePLSQLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SimplePLSQLParser#constant_modifier.
+    def visitConstant_modifier(self, ctx:SimplePLSQLParser.Constant_modifierContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#not_null.
+    def visitNot_null(self, ctx:SimplePLSQLParser.Not_nullContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#init.
+    def visitInit(self, ctx:SimplePLSQLParser.InitContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#type_decl.
+    def visitType_decl(self, ctx:SimplePLSQLParser.Type_declContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#record_type_body.
+    def visitRecord_type_body(self, ctx:SimplePLSQLParser.Record_type_bodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#record_fields.
+    def visitRecord_fields(self, ctx:SimplePLSQLParser.Record_fieldsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#field.
+    def visitField(self, ctx:SimplePLSQLParser.FieldContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#collection_type_body.
+    def visitCollection_type_body(self, ctx:SimplePLSQLParser.Collection_type_bodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#ref_cursor_body.
+    def visitRef_cursor_body(self, ctx:SimplePLSQLParser.Ref_cursor_bodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#cursor_decl.
+    def visitCursor_decl(self, ctx:SimplePLSQLParser.Cursor_declContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#cursor_params.
+    def visitCursor_params(self, ctx:SimplePLSQLParser.Cursor_paramsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#cursor_select.
+    def visitCursor_select(self, ctx:SimplePLSQLParser.Cursor_selectContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#select_list.
+    def visitSelect_list(self, ctx:SimplePLSQLParser.Select_listContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#pragma_stmt.
+    def visitPragma_stmt(self, ctx:SimplePLSQLParser.Pragma_stmtContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SimplePLSQLParser#stmt_list.
     def visitStmt_list(self, ctx:SimplePLSQLParser.Stmt_listContext):
         return self.visitChildren(ctx)
@@ -166,6 +236,36 @@ class SimplePLSQLVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimplePLSQLParser#FuncCallExpr.
     def visitFuncCallExpr(self, ctx:SimplePLSQLParser.FuncCallExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#type_spec.
+    def visitType_spec(self, ctx:SimplePLSQLParser.Type_specContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#simple_type.
+    def visitSimple_type(self, ctx:SimplePLSQLParser.Simple_typeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#numeric_type.
+    def visitNumeric_type(self, ctx:SimplePLSQLParser.Numeric_typeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#char_type.
+    def visitChar_type(self, ctx:SimplePLSQLParser.Char_typeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#pct_attr.
+    def visitPct_attr(self, ctx:SimplePLSQLParser.Pct_attrContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimplePLSQLParser#qualified_name.
+    def visitQualified_name(self, ctx:SimplePLSQLParser.Qualified_nameContext):
         return self.visitChildren(ctx)
 
 

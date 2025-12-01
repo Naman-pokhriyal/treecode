@@ -9,7 +9,7 @@
           "type": "Param",
           "name": "n",
           "mode": "IN",
-          "typ": "INTEGER"
+          "typ": null
         }
       ],
       "block": {
@@ -46,7 +46,7 @@
           "type": "Param",
           "name": "n",
           "mode": "IN",
-          "typ": "INTEGER"
+          "typ": null
         }
       ],
       "block": {
