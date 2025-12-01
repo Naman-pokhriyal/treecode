@@ -1,0 +1,441 @@
+{
+  "type": "Program",
+  "units": [
+    {
+      "type": "ProcDecl",
+      "name": "inc_by",
+      "params": [
+        {
+          "type": "Param",
+          "name": "n",
+          "mode": "IN",
+          "typ": "INTEGER"
+        }
+      ],
+      "block": {
+        "type": "Block",
+        "declarations": [],
+        "statements": [
+          {
+            "type": "Assignment",
+            "target": "x",
+            "expr": {
+              "type": "BinOp",
+              "op": "+",
+              "left": {
+                "type": "VarRef",
+                "name": "x"
+              },
+              "right": {
+                "type": "VarRef",
+                "name": "n"
+              }
+            },
+            "start_line": 6,
+            "end_line": 6
+          }
+        ]
+      },
+      "is_function": false
+    },
+    {
+      "type": "ProcDecl",
+      "name": "sum_to",
+      "params": [
+        {
+          "type": "Param",
+          "name": "n",
+          "mode": "IN",
+          "typ": "INTEGER"
+        }
+      ],
+      "block": {
+        "type": "Block",
+        "declarations": [],
+        "statements": [
+          {
+            "type": "Assignment",
+            "target": "total",
+            "expr": {
+              "type": "IntLiteral",
+              "value": 0
+            },
+            "start_line": 11,
+            "end_line": 11
+          },
+          {
+            "type": "ForStmt",
+            "var": "i",
+            "start_expr": {
+              "type": "IntLiteral",
+              "value": 1
+            },
+            "end_expr": {
+              "type": "VarRef",
+              "name": "n"
+            },
+            "body": [
+              {
+                "type": "Assignment",
+                "target": "total",
+                "expr": {
+                  "type": "BinOp",
+                  "op": "+",
+                  "left": {
+                    "type": "VarRef",
+                    "name": "total"
+                  },
+                  "right": {
+                    "type": "VarRef",
+                    "name": "i"
+                  }
+                },
+                "start_line": 13,
+                "end_line": 13
+              }
+            ]
+          },
+          {
+            "type": "ReturnStmt",
+            "expr": {
+              "type": "VarRef",
+              "name": "total"
+            }
+          }
+        ]
+      },
+      "is_function": true
+    },
+    {
+      "type": "Block",
+      "declarations": [
+        {
+          "type": "Decl",
+          "name": "x",
+          "typ": null,
+          "init": {
+            "type": "IntLiteral",
+            "value": 10
+          }
+        },
+        {
+          "type": "Decl",
+          "name": "y",
+          "typ": null,
+          "init": {
+            "type": "IntLiteral",
+            "value": 3
+          }
+        },
+        {
+          "type": "Decl",
+          "name": "rec",
+          "typ": null,
+          "init": {
+            "type": "IntLiteral",
+            "value": 0
+          }
+        },
+        {
+          "type": "Decl",
+          "name": "val",
+          "typ": null,
+          "init": {
+            "type": "IntLiteral",
+            "value": 0
+          }
+        },
+        {
+          "type": "Decl",
+          "name": "total",
+          "typ": null,
+          "init": {
+            "type": "IntLiteral",
+            "value": 0
+          }
+        },
+        {
+          "type": "Decl",
+          "name": "s",
+          "typ": null,
+          "init": {
+            "type": "IntLiteral",
+            "value": 0
+          }
+        }
+      ],
+      "statements": [
+        {
+          "type": "ProcCall",
+          "name": "inc_by",
+          "args": [
+            {
+              "type": "IntLiteral",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "type": "IfStmt",
+          "cond": {
+            "type": "BinOp",
+            "op": "AND",
+            "left": {
+              "type": "BinOp",
+              "op": ">",
+              "left": {
+                "type": "VarRef",
+                "name": "x"
+              },
+              "right": {
+                "type": "IntLiteral",
+                "value": 5
+              }
+            },
+            "right": {
+              "type": "BinOp",
+              "op": "<",
+              "left": {
+                "type": "VarRef",
+                "name": "y"
+              },
+              "right": {
+                "type": "IntLiteral",
+                "value": 10
+              }
+            }
+          },
+          "then_body": [
+            {
+              "type": "Assignment",
+              "target": "x",
+              "expr": {
+                "type": "BinOp",
+                "op": "+",
+                "left": {
+                  "type": "VarRef",
+                  "name": "x"
+                },
+                "right": {
+                  "type": "IntLiteral",
+                  "value": 1
+                }
+              },
+              "start_line": 31,
+              "end_line": 31
+            }
+          ],
+          "else_body": [
+            {
+              "type": "Assignment",
+              "target": "x",
+              "expr": {
+                "type": "IntLiteral",
+                "value": 0
+              },
+              "start_line": 33,
+              "end_line": 33
+            }
+          ]
+        },
+        {
+          "type": "Assignment",
+          "target": "i",
+          "expr": {
+            "type": "IntLiteral",
+            "value": 0
+          },
+          "start_line": 37,
+          "end_line": 37
+        },
+        {
+          "type": "WhileStmt",
+          "cond": {
+            "type": "BinOp",
+            "op": "<",
+            "left": {
+              "type": "VarRef",
+              "name": "i"
+            },
+            "right": {
+              "type": "IntLiteral",
+              "value": 3
+            }
+          },
+          "body": [
+            {
+              "type": "Assignment",
+              "target": "i",
+              "expr": {
+                "type": "BinOp",
+                "op": "+",
+                "left": {
+                  "type": "VarRef",
+                  "name": "i"
+                },
+                "right": {
+                  "type": "IntLiteral",
+                  "value": 1
+                }
+              },
+              "start_line": 39,
+              "end_line": 39
+            },
+            {
+              "type": "Assignment",
+              "target": "rec",
+              "expr": {
+                "type": "BinOp",
+                "op": "+",
+                "left": {
+                  "type": "VarRef",
+                  "name": "rec"
+                },
+                "right": {
+                  "type": "DotRef",
+                  "base": "obj",
+                  "field": "field"
+                }
+              },
+              "start_line": 41,
+              "end_line": 41
+            }
+          ]
+        },
+        {
+          "type": "Assignment",
+          "target": "total",
+          "expr": {
+            "type": "IntLiteral",
+            "value": 0
+          },
+          "start_line": 45,
+          "end_line": 45
+        },
+        {
+          "type": "ForStmt",
+          "var": "j",
+          "start_expr": {
+            "type": "IntLiteral",
+            "value": 1
+          },
+          "end_expr": {
+            "type": "IntLiteral",
+            "value": 5
+          },
+          "body": [
+            {
+              "type": "SelectInto",
+              "target": {
+                "type": "VarRef",
+                "name": "val"
+              },
+              "expr": {
+                "type": "VarRef",
+                "name": "a"
+              },
+              "from_table": "mytable",
+              "where_expr": {
+                "type": "BinOp",
+                "op": "=",
+                "left": {
+                  "type": "VarRef",
+                  "name": "id"
+                },
+                "right": {
+                  "type": "VarRef",
+                  "name": "j"
+                }
+              }
+            },
+            {
+              "type": "Assignment",
+              "target": "total",
+              "expr": {
+                "type": "BinOp",
+                "op": "+",
+                "left": {
+                  "type": "VarRef",
+                  "name": "total"
+                },
+                "right": {
+                  "type": "VarRef",
+                  "name": "val"
+                }
+              },
+              "start_line": 48,
+              "end_line": 48
+            }
+          ]
+        },
+        {
+          "type": "Assignment",
+          "target": "s",
+          "expr": {
+            "type": "ProcCall",
+            "name": "sum_to",
+            "args": [
+              {
+                "type": "IntLiteral",
+                "value": 5
+              }
+            ]
+          },
+          "start_line": 52,
+          "end_line": 52
+        },
+        {
+          "type": "IfStmt",
+          "cond": {
+            "type": "BinOp",
+            "op": "OR",
+            "left": {
+              "type": "BinOp",
+              "op": ">",
+              "left": {
+                "type": "VarRef",
+                "name": "total"
+              },
+              "right": {
+                "type": "IntLiteral",
+                "value": 0
+              }
+            },
+            "right": {
+              "type": "BinOp",
+              "op": "=",
+              "left": {
+                "type": "VarRef",
+                "name": "s"
+              },
+              "right": {
+                "type": "IntLiteral",
+                "value": 15
+              }
+            }
+          },
+          "then_body": [
+            {
+              "type": "NullStmt"
+            }
+          ],
+          "else_body": [
+            {
+              "type": "ExitStmt"
+            }
+          ]
+        },
+        {
+          "type": "Assignment",
+          "target": "obj.field",
+          "expr": {
+            "type": "VarRef",
+            "name": "total"
+          },
+          "start_line": 62,
+          "end_line": 62
+        }
+      ]
+    }
+  ]
+}
